@@ -2,6 +2,13 @@ pipeline {
   agent any
   stages {
     stage('Install') {
+      agent {
+        docker {
+          args '-p 3000:3000 '
+          image 'node:alpine-6'
+        }
+
+      }
       steps {
         sh 'npm install'
       }
